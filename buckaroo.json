@@ -1,0 +1,6 @@
+{
+  "name": "fchd",
+  "dependencies": {
+    "philsquared/catch": "1.9.3"
+  }
+}

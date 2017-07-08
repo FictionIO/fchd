@@ -24,8 +24,8 @@ before_install:
       - brew update
       - brew --version
       - brew tap facebook/fb
-      - brew install --HEAD buck
-      - brew install --HEAD loopperfect/lp/buckaroo
+      - brew install buck
+      - brew install loopperfect/lp/buckaroo
 
 
 matrix:

@@ -1,0 +1,25 @@
+include_defs('//BUCKAROO_DEPS')
+
+cxx_library(
+  name = 'fchd',
+  header_namespace = 'fchd',
+  srcs = glob([
+    'src/**/*.cpp',
+  ]),
+  exported_headers = subdir_glob([
+    ('include', '**/*.hpp'),
+    ('include', '**/*.h'),
+  ]),
+  visibility = [
+    '//...',
+  ],
+  deps = BUCKAROO_DEPS,
+)
+
+cxx_test(
+  name = 'fchd-test',
+  srcs = glob([
+    'test/**/*.cpp',
+  ]),
+  deps = BUCKAROO_DEPS + ['//lib:fchd'],
+)

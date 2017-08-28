@@ -15,11 +15,11 @@ cache:
 
 before_install:
     # Linux Specific
-      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then test -d $HOME/.linuxbrew/bin || git clone https://github.com/Linuxbrew/brew.git $HOME/.linuxbrew; fi
-      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then PATH="$HOME/.linuxbrew/bin:$PATH"; fi
-      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >>~/.bash_profile; fi
-      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export MANPATH="$(brew --prefix)/share/man/:$MANPATH"; fi
-      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"; fi
+      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"; fi
+      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$PATH"; fi
+      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"; fi
+      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then test -r ~/.bash_profile && echo 'export PATH="$(brew --prefix)/bin:$PATH"' >>~/.bash_profile; fi
+      - if [ "$TRAVIS_OS_NAME" = "linux" ]; then echo 'export PATH="$(brew --prefix)/bin:$PATH"' >>~/.profile; fi
     # Linux / OSX
       - brew update
       - brew --version
